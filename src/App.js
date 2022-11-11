@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Gallery from "./components/Gallery";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Profiles from "./components/Profiles";
 
 
 import { Routes, Route, Link, Navigate } from "react-router-dom";
@@ -64,15 +65,19 @@ function App() {
 
       {
         (isLogin) ?
+        <div className='header'>
           <ul className='navBar'>
             <li> <Link to={`/`}>Home</Link> </li>
             <li> <Link to={`/gallery`}>Gallery</Link> </li>
             <li> <Link to={`/Contact`}>Contact</Link> </li>
             <li> <Link to={`/profile`}>Profile</Link> </li>
-            <li> {fullName} <button onClick={logoutHandler}>Logout</button> </li>
-          </ul>
+      
+            <li className='name'> {fullName}</li>
+            <button onClick={logoutHandler} className='logout'><span className='text'>Logout</span></button> 
+           
+            </ul></div>
           :
-          <ul className='navBar'>
+          <ul className='navBar3'>
             <li> <Link to={`/`}>Login</Link> </li>
             <li> <Link to={`/signup`}>Signup</Link> </li>
           </ul>
@@ -84,6 +89,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="contact" element={<Contact />} />
           <Route path="gallery" element={<Gallery />} />
+          <Route path="profile" element={<Profiles />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         :
@@ -95,6 +101,8 @@ function App() {
       }
 
     </div>
+    
   );
+
 }
 export default App;
